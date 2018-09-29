@@ -1,8 +1,35 @@
+# Block devices
+/dev/block/mmcblk0p27							u:object_r:persist_block_device:s0
+
+# Camera
+/data/vendor/qcam(/.*)?                                                    u:object_r:vendor_camera_data_file:s0
+
 # Goodix Fingerprint
-/dev/goodix_fp*     u:object_r:gx_fpd_device:s0
-/system/bin/gx_fpd       u:object_r:gx_fpd_exec:s0
+/dev/goodix_fp     u:object_r:gx_fpd_device:s0
+/(vendor|system/vendor)/bin/gx_fpd       u:object_r:gx_fpd_exec:s0
 
 # Goodix Fingerprint data
 /data/system/fingerprint(/.*)?    u:object_r:gx_fpd_data_file:s0
 /persist/data/gxfp(/.*)?    u:object_r:gx_fpd_data_file:s0
 
+# HALs
+/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.0-service\.nubia		u:object_r:hal_fingerprint_nubia_exec:s0
+
+# Lights
+/sys/devices/soc/78b6000\.i2c/i2c-2/2-0045/leds/nubia_led(/.*)?            u:object_r:sysfs_leds:s0
+
+# NFC (nx549j)
+/dev/bcm2079x                                                              u:object_r:nfc_device:s0
+
+# Sensors
+/(vendor|system/vendor)/bin/hw/android\.hardware\.sensors@1\.0-service\.nubia             u:object_r:hal_sensors_default_exec:s0
+/sys/devices/virtual/proximity/proximity(/.*)?                                     u:object_r:sysfs_sensors:s0
+/sys/devices/virtual/light/light(/.*)?                                     u:object_r:sysfs_sensors:s0
+
+# Touchscreen
+# nubia nx551j touchscreen files
+/sys/devices/soc/78b7000\.i2c/i2c-3/3-005d(/.*)?                           u:object_r:sysfs_touchpanel:s0
+/sys/devices/soc/7af5000\.i2c/i2c-5/5-0020/input/input1(/.*)?              u:object_r:sysfs_touchpanel:s0
+
+# nubia nx549j touchscreen files
+/sys/devices/soc/78b7000\.i2c/i2c-3/3-0020/input/input1(/.*)?              u:object_r:sysfs_touchpanel:s0
